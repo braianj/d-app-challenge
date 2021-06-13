@@ -2,6 +2,8 @@
  * Root saga, import all app sagas
  */
 import { takeLatest, takeEvery, select, all } from 'redux-saga/effects';
+import * as actionTypes from '../constants/actionTypes'
+import * as sagaApp from './app.saga'
 
 
 /**
@@ -34,6 +36,8 @@ function* rootSaga() {
          */
         //catch all dispatched action
         takeEvery('*', logger),
+
+        takeLatest(actionTypes.ETH_CONNECT_METAMASK_REQUESTED, sagaApp.doConnectWallet),
 
     ]);
 }

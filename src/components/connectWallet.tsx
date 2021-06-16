@@ -10,7 +10,7 @@ declare const window: any;
 declare const ethereum: any;
 
 /**
- * This component is used to connect to the 
+ * This component is used to connect to the wallet
  * @returns ConnectWallet component
  */
 const ConnectWallet = () => {
@@ -36,7 +36,7 @@ const ConnectWallet = () => {
             window.location.reload();
         });
 
-    }, []);
+    }, [dispatch]);
 
 
     const walletConnection = useSelector((state: RootState) => state.walletConnection);

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import 'decentraland-ui/lib/styles.css';
+import 'decentraland-ui/lib/dark-theme.css';
 import './App.css';
 import { store } from "./store/configureStore";
-import ConnectWallet from "./components/connectWallet"
+import MainContent from "./screens/mainContent";
 
 
 function App() {
 
   return (
     <Provider store={store}>
-      <div className="App">
-        <header className="App-header">
-          <ConnectWallet/>
-        </header>
-      </div>
+      <MainContent></MainContent>
     </Provider>
   );
 }

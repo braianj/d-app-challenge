@@ -16,7 +16,6 @@ function* logger(action) {
     console.log('%c' + action.type, 'color: #ffeb3b');
     console.log('%c action', 'color: #03a9f4', action);
     console.log('%c state', 'color: #8bc34a', state);
-    //console.log('%c state negotiation', 'color: #f44336', state.negotiation);
     yield;
 }
 
@@ -38,6 +37,7 @@ function* rootSaga() {
         takeEvery('*', logger),
 
         takeLatest(actionTypes.ETH_CONNECT_METAMASK_REQUESTED, sagaApp.doConnectWallet),
+        takeLatest(actionTypes.ETH_TOKEN_INFORMATION_METAMASK_REQUESTED, sagaApp.doGetTokenInformation),
 
     ]);
 }

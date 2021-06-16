@@ -1,10 +1,5 @@
 import * as actionTypes from '../constants/actionTypes';
-
-interface reducerWalletConnectionInterface {
-    hasError: boolean,
-    isConnecting: boolean,
-    isConnected: boolean
-};
+import { reducerWalletConnectionInterface, reducerWalletConnectionActionInterface} from '../interfaces'
 
 const initialState: reducerWalletConnectionInterface = {
     hasError: false,
@@ -12,7 +7,7 @@ const initialState: reducerWalletConnectionInterface = {
     isConnected: false,
 };
 
-export const walletConnection = (state = initialState, action: any): reducerWalletConnectionInterface => {
+export const walletConnection = (state = initialState, action: reducerWalletConnectionActionInterface): reducerWalletConnectionInterface => {
     switch (action.type) {
         case actionTypes.ETH_CONNECT_METAMASK_REQUESTED:
             return {

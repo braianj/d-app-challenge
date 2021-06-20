@@ -1,7 +1,7 @@
 # Challenge D-App
 
 
-## Installation proccess
+## Installation process
 
 ### `npm install`
 After clone this project with run npm install.

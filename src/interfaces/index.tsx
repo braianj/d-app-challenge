@@ -33,3 +33,38 @@ export interface connectWalletPropsInterface {
 export type reducerWalletActionType = reducerWalletConnectionActionInterface & {
     payload: walletType
 }
+
+export interface modalInterface {
+    show: boolean,
+    message: string,
+    title: string
+}
+
+export type modalActionInterface = reducerWalletConnectionActionInterface & {
+    payload: modalInterface
+}
+
+export interface transferPropsInterface {
+    address: HexBase64BinaryEncoding,
+    amount: string
+}
+
+export interface errorCatched {
+    code: number,
+    message: string
+    stack?: string
+}
+
+export interface transferRespInterface {
+    success: boolean,
+    transferData?: any,
+    error?: any
+}
+
+export interface transferInterface {
+    requesting: boolean,
+    succeded: boolean,
+    failed: boolean
+}
+
+export type transferType = reducerWalletConnectionActionInterface

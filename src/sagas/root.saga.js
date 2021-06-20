@@ -38,6 +38,7 @@ function* rootSaga() {
 
         takeLatest(actionTypes.ETH_CONNECT_METAMASK_REQUESTED, sagaApp.doConnectWallet),
         takeLatest(actionTypes.ETH_TOKEN_INFORMATION_METAMASK_REQUESTED, sagaApp.doGetTokenInformation),
+        takeLatest(actionTypes.ETH_TOKEN_TRANSFER_REQUESTED, sagaApp.doRequestTransfer),
 
     ]);
 }

@@ -39,6 +39,14 @@
   text-align: center;
 }
 
+.Transfer-card-width {
+  width: 800px;
+}
+
+.Margin-right {
+  margin-left: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

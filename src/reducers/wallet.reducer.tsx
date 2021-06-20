@@ -12,6 +12,7 @@ const initialState: walletType = {
 export const wallet = (state = initialState, action: reducerWalletActionType): walletType => {
     switch (action.type) {
         case actionTypes.ETH_TOKEN_INFORMATION_METAMASK_REQUESTED:
+        case actionTypes.ETH_CONNECT_METAMASK_REQUESTED:
             return {
                 ...initialState
             };

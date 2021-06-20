@@ -18,34 +18,21 @@ const ConnectWallet = () => {
     // load dispacher
     const dispatch = useDispatch();
 
-    React.useEffect(() => {
-
-        // this allow as to indentify when the account is changed
-        ethereum.on('accountsChanged', function (accounts: any) {
-            if (!accounts.length) {
-                dispatch({ type: actionTypes.ETH_CONNECT_METAMASK_CLEAR })
-            } else {
-                console.log(accounts);
-            }
-        });
-
-        ethereum.on('chainChanged', (chainId: any) => {
-            // Handle the new chain.
-            // Correctly handling chain changes can be complicated.
-            // We recommend reloading the page unless you have good reason not to.
-            window.location.reload();
-        });
-
-    }, [dispatch]);
-
-
+    // Get connection wallet reducer to fill SignIn component with props 
     const walletConnection = useSelector((state: RootState) => state.walletConnection);
 
+    // Fire action to connect to wallet
     const tryConnectWallet = (): boolean => {
 
         // check MetaMask installed
         if (!(typeof window.ethereum !== 'undefined' && ethereum.isMetaMask)) {
-            console.log('MetaMask is not installed!');
+            dispatch({
+                type: actionTypes.MODAL_SHOW,
+                payload: {
+                    title: "Metamask Connection error",
+                    message: "MetaMask is not installed!"
+                }
+            })
             return false;
         }
         
@@ -54,9 +41,7 @@ const ConnectWallet = () => {
         return true;
     }
     
-    return (
-        <SignIn {...walletConnection} onConnect={tryConnectWallet} />
-        );
+    return <SignIn {...walletConnection} onConnect={tryConnectWallet} />;
         
 }
 

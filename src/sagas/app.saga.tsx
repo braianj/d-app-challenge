@@ -91,6 +91,9 @@ export function* doGetTokenInformation(action): Generator<any> {
                     message: "There is an error retrieving token information"
                 }
             });
+            yield put({
+                type: actionTypes.ETH_CONNECT_METAMASK_CLEAR
+            });
         }
 
     } catch (e) {

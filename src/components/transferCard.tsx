@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Segment, Header, Field, Button } from 'decentraland-ui';
 import {
@@ -6,6 +6,12 @@ import {
 } from "react-router-dom";
 import * as actionTypes from "../constants/actionTypes";
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../reducers'
+
+
+import {
+    useParams
+} from "react-router-dom";
 
 /**
  * 
@@ -16,8 +22,10 @@ const TransferCard = () => {
     // load dispacher
     const dispatch = useDispatch();
 
+    let { addressQuery } = useParams();
     const [amount, setAmount] = React.useState<string>('');
-    const [address, setAddress] = React.useState<string>('');
+    const [address, setAddress] = React.useState<string>(addressQuery || "");
+    const { requesting } = useSelector((state: RootState) => state.transfer);
 
     const transfer = async () => {
         // check that the user set some information
@@ -58,8 +66,8 @@ const TransferCard = () => {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
             />
-            <Button primary onClick={transfer}>Send</Button>
-            
+            <Button primary onClick={transfer} loading={requesting}>Send</Button>
+
             <Link to="/" className="Margin-right"><Button secondary>Back</Button></Link>
         </Segment>
     );

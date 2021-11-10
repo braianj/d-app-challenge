@@ -63,7 +63,10 @@ const WalletCard = () => {
                 Address: {wallet.address }
             </p>
             <p>
-                Balance: {wallet.balance} {wallet.symbol} <Link to="/transfer">Transfer</Link>
+                Network: {wallet.network}
+            </p>
+            <p>
+                Balance: {wallet.balance} {wallet.symbol} <Link to="/transfer/0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266">Transfer</Link>
             </p>
         </Segment>
     );

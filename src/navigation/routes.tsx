@@ -29,7 +29,8 @@ const Routes = () => {
     React.useEffect(
         () => {
             // Prevent reload site in transfer component
-            if ((walletConnection.isConnected && location.pathname === '/transfer' && history.action === 'POP') || (transfer.succeded && location.pathname === '/transfer')) {
+            console.log("location: ", location);
+            if ((walletConnection.isConnected && location.pathname.indexOf('/transfer') >= 0 && history.action === 'POP') || (transfer.succeded && location.pathname.indexOf('/transfer') >= 0)) {
                 history.replace("/");
             }
             if (transfer.succeded) {
@@ -44,7 +45,7 @@ const Routes = () => {
             <Route exact path="/">
                 <WalletCard></WalletCard>
             </Route>
-            <Route path="/transfer">
+            <Route path="/transfer/:addressQuery?">
                 <TransferCard></TransferCard>
             </Route>
         </Switch>

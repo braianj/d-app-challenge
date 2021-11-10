@@ -19,6 +19,7 @@ export interface connectTokenRespInterface {
     name: string,
     symbol: string,
     balance: string,
+    network: string,
     error?: string
 }
 

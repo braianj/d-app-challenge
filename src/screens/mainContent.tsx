@@ -9,6 +9,8 @@ import {
 import Routes from '../navigation/routes';
 import * as actionTypes from "../constants/actionTypes";
 
+import {ethers} from 'ethers';
+
 declare const window: any;
 declare const ethereum: any;
 /**
@@ -44,6 +46,15 @@ const MainContent = () => {
                     // Handle the new chain.
                     window.location.reload();
                 });
+
+                const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+                provider.on("network", (newNetwork, oldNetwork) => {
+                    // When a Provider makes its initial connection, it emits a "network"
+                    // event with a null oldNetwork along with the newNetwork. So, if the
+                    // oldNetwork exists, it represents a changing network
+                    console.log(newNetwork, oldNetwork);
+                });
+
             }
         },
         [dispatch],

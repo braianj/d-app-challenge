@@ -83,11 +83,17 @@ const getTokenInformation = async ({ currentAccount }: connectWalletPropsInterfa
 
         // Format balance
         const balance: string = ethers.utils.formatUnits(balanceNotFormated, env.DOMMY_TOKEN_DECIMALS);
+
+        // Get network information
+        const networkInformation = await provider.getNetwork();
+
+        console.log(networkInformation);
         
-        return { name, symbol, balance };
+        return { name, symbol, balance, network: networkInformation.name };
         
     } catch (err: any) {
-        return { name: "", symbol: "", balance: "", error: err };
+        console.log(err);
+        return { name: "", symbol: "", balance: "", error: err, network: "" };
     }
 
 }
